@@ -56,12 +56,7 @@ public class CodeGenerator {
         if (CollUtil.isNotEmpty(tableNames)) {
             customStrategyConfig.setInclude(tableNames.toArray(new String[0]));
         }
-//        "entity_path" -> "E:\workspace\demo\code-generator-demo\src\main\java\com\zdl\demo2\entity"
-//        "controller_path" -> "E:\workspace\demo\code-generator-demo\src\main\java\com\zdl\demo2\controller"
-//        "xml_path" -> "E:\workspace\demo\code-generator-demo\src\main\java\com\zdl\demo2\mapper\xml"
-//        "mapper_path" -> "E:\workspace\demo\code-generator-demo\src\main\java\com\zdl\demo2\mapper"
-//        "service_impl_path" -> "E:\workspace\demo\code-generator-demo\src\main\java\com\zdl\demo2\service\impl"
-//        "service_path" -> "E:\workspace\demo\code-generator-demo\src\main\java\com\zdl\demo2\service"
+
         Map<String, String>  pathInfo = CollectionUtils.newHashMapWithExpectedSize(6);
         String userDir = System.getProperty("user.dir");
         String configParent = customPackageConfig.getParent();
