@@ -1,0 +1,71 @@
+code-generator:
+  global-config:  # 作用详见 com.baomidou.mybatisplus.generator.config.GlobalConfig
+    output-dir: E:/workspace/demo/mybatis-plus-demo
+    file-override: true
+#    open: true
+#    enable-cache: false
+    author: zhoudeli
+#    kotlin: false
+#    swagger2: false
+#    active-record: false
+#    base-result-map: false
+#    date-type: TIME_PACK
+#    base-column-list: false
+#    entity-name:
+#    mapper-name:
+#    xml-name:
+#    service-name:
+#    service-impl-name:
+#    controller-name:
+  data-source-config:  # 作用详见 com.baomidou.mybatisplus.generator.config.DataSourceConfig
+#    schema-name:
+    url: jdbc:mysql://localhost:3306/incubator?useUnicod e=true&useSSL=false&characterEncoding=utf8
+    driver-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  package-config:  # 作用详见 com.baomidou.mybatisplus.generator.config.PackageConfig
+    parent: com.zdl
+#    module-name:
+    entity: entity
+    service: service
+    service-impl: service.impl
+    mapper: mapper
+    xml: mapper.xml
+    controller: controller
+  template-config: # 作用详见 com.baomidou.mybatisplus.generator.config.TemplateConfig
+    entity: "/templates/entity.java"
+    entity-kt: "/templates/entity.kt"
+    service: "/templates/service.java"
+    serviceImpl: "/templates/serviceImpl.java"
+    mapper: "/templates/mapper.java"
+    xml: "/templates/mapper.xml"
+    controller: "/templates/controller.java"
+  strategy-config: # 作用详见 com.baomidou.mybatisplus.generator.config.StrategyConfig
+    is-capital-mode: false
+    skip-view: false
+    table-prefix:
+      - test_
+    field-prefix:
+      - test_
+#    superEntityClass:
+#    superEntityColumns:
+#    superMapperClass:
+#    superServiceClass:
+#    superServiceImplClass:
+#    superControllerClass:
+    entity-serial-versionUID: true
+    entity-column-constant: false
+    chain-model: false
+    entity-lombok-model: true
+    entity-boolean-colum-remove-is-prefix: true
+    rest-controller-style: true
+    controller-mapping-hyphen-style: true
+    entity-table-field-annotation-enable: true
+#    versionFieldName:
+#    logicDeleteFieldName:
+#    tableFillList:
+    enable-sql-filter: false
+
+
+
+
