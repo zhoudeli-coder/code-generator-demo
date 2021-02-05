@@ -65,6 +65,8 @@ code-generator:
 #    logicDeleteFieldName:
 #    tableFillList:
     enable-sql-filter: false
+    naming: underline_to_camel
+    column_naming: underline_to_camel
 
 
 
