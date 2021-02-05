@@ -101,13 +101,76 @@
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
 	</dependencies>
-	<build>
+<!--	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.1.12.RELEASE</version>
+			</plugin>
+		</plugins>
+	</build>-->
+	<build>
+		<finalName>code-generator</finalName>
+		<plugins>
+			<plugin>
+				<!--必须使用apache的打包工具，因为spring的打包插件功能不够-->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+							<!-- 程序启动入口 -->
+							<mainClass>com.zdl.demo.CodeGeneratorApplication</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>./</Class-Path>
+						</manifestEntries>
+					</archive>
+					<excludes>
+						<!--设置不打进jar包的文件-->
+						<!--<exclude>*.yml</exclude>-->
+						<exclude>config/*.yml</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>make-zip</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<!--配置文件中定义的id不包含到最终文件名里-->
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptors>
+								<!--配置文件所在的位置-->
+								<descriptor>src/main/resources/assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

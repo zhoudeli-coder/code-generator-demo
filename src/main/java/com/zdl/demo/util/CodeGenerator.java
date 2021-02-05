@@ -1,6 +1,7 @@
 package com.zdl.demo.util;
 
 import cn.hutool.core.collection.CollUtil;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -61,6 +62,7 @@ public class CodeGenerator {
         pathInfo.put(ConstVal.CONTROLLER_PATH, joinPath(userDir + "\\src\\main\\java\\", configParent, Strings.EMPTY, customPackageConfig.getController()));
         pathInfo.put(ConstVal.XML_PATH, joinPath(userDir + "\\src\\main\\resources\\mapper\\", Strings.EMPTY, customPackageConfig.getModuleName(), Strings.EMPTY));
         customPackageConfig.setPathInfo(pathInfo);
+        System.out.println(JSON.toJSON(pathInfo));
 
         generator.setGlobalConfig(customGlobalConfig);
         generator.setDataSource(customDataSourceConfig);

@@ -1,6 +1,7 @@
 package com.zdl.demo.config;
 
 import cn.hutool.core.collection.CollUtil;
+import com.alibaba.fastjson.JSON;
 import org.springframework.boot.env.YamlPropertySourceLoader;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.PropertySource;
@@ -26,8 +27,10 @@ public class YamlAndPropertySourceFactory extends DefaultPropertySourceFactory {
 
         Resource resourceResource = resource.getResource();
         if (Boolean.FALSE.equals(resourceResource.exists())) {
+            System.out.println("配置文件不存在" + resource.getResource().getFilename());
             return new PropertiesPropertySource(null, new Properties());
         } else if (resourceResource.getFilename().endsWith(".yml") || resourceResource.getFilename().endsWith(".yaml")) {
+            System.out.println("配置文件存在" + resource.getResource().getFilename());
             List<PropertySource<?>> sourceList = new YamlPropertySourceLoader().load(resourceResource.getFilename(), resourceResource);
             if (CollUtil.isNotEmpty(sourceList)) {
                 return sourceList.get(0);
